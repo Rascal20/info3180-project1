@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock %}
+
+ {% block main %}
+<h2>Properties</h2>
+{% include 'flash_messages.html' %}
+<section id="propertyset"> 
+
+    {% for property in properties: %}
+    <div class="card">
+        <img class="card-img-top" src='{{ url_for("get_upload", filename=property.photo)}}' alt="Property Image"/>
+        
+        <div class="card-body"> 
+          <h5 class="card-title">{{ property.property_title }}</h5>
+         <span><img class="locationimg" src="{{ url_for('static', filename='images/location.png') }}"/> {{property.location}} </span>
+         <span class="price"> {{ loc.currency(property.price, grouping=True) }} </span>
+        </div>
+        
+        <a href="{{url_for('show_property', id = property.id)}}" class="cardbtn"> View Property </a>
+      </div>
+    
+    {% endfor %}
+</section>
+
+ {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock %}
+
+ {% block main %}
+ <h1> Add New Property </h1>
+<form action="{{ url_for('add_property') }}" method="POST" enctype = "multipart/form-data"  class="col-md-7">
+    {{prop_obj.csrf_token}}
+    <div>
+        {{prop_obj.property_title.label}}
+        {{ prop_obj.property_title(class="form-control") }}
+    </div>
+    <br>
+    <div>
+        {{ prop_obj.description.label }}
+        {{ prop_obj.description(class="form-control", **{"rows": "4"}) }}
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-6">
+        {{ prop_obj.no_of_rooms.label }}
+        {{ prop_obj.no_of_rooms(class="form-control") }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ prop_obj.no_of_bathrooms.label }}
+        {{ prop_obj.no_of_bathrooms(class="form-control") }}
+      </div>
+    <br>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        {{ prop_obj.price.label }}
+        {{ prop_obj.price(class="form-control") }}
+      </div>
+      <div class="form-group col-md-6">
+        {{ prop_obj.property_type.label }}
+        {{ prop_obj.property_type(class="form-control") }}
+      </div>
+    </div>
+    <br>
+    <div class="form-group col-md-6">
+        {{ prop_obj.location.label }}
+        {{ prop_obj.location(class="form-control") }}
+    </div>
+    <br>
+    <div class="form-group">
+        {{ prop_obj.photo.label }}
+        {{ prop_obj.photo(class="form-control fileinput ") }}
+    </div>
+   
+    <div  class="form-group">
+      <button type="submit" class="btn btn-primary">Add Property</button>
+    </div>
+</form>
+
+{% endblock %}

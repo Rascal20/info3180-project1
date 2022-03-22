@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block css %}
+{% endblock %}
+
+ {% block main %}
+
+ <div class="parentcard">
+
+    <section class="photo"> 
+        <img src='{{ url_for("get_upload", filename=property.photo)}}' />
+    </section>
+
+    <section class="content"> 
+        <h3>{{ property.property_title }} </h3>
+        <section class="pricetype"> 
+            <span class="price"> {{ loc.currency(property.price, grouping=True) }} </span>
+            <span class="type">{{ property.property_type }}</span>
+        </section>
+
+        <p>{{ property.description }}</p>
+
+        <section class="rooms">
+            <span class="bedspan"><img class="bedimg" src="{{url_for('static', filename='images/bed.png')}}"/> {{ property.no_of_rooms }} Room/s </span>
+            <span class="bathspan"><img class="bathimg" src="{{url_for('static', filename='images/bathroom.png')}}"/> {{ property.no_of_bathrooms }} Bathroom/s</span>
+        </section>
+
+        <span class="locationspan"><img class="locationimg" src="{{url_for('static', filename='images/location.png')}}"/> {{ property.location }} </span>
+        <button class="singlecardbutton"> Email Realtor</button>
+
+    </section>
+
+ </div>
+
+ {% endblock %}
